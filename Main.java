@@ -31,5 +31,53 @@
     {
         return 1 + (50 * Math.sinh(50/x) / x) - Math.cosh(50/x);
     }
+
+    private void bisection(double a, double b, double epsilon)
+    {
+        int n;
+        int nmax = 100;
+        double c, fa, fb, fc, error;
+
+        fa = f(a);
+        fb = f(b);
+
+        if(Math.signum(fa) == Math.signum(fb))
+        {
+            System.out.println("a: " + a + " b: " + b + " f(a): " + fa + " f(b): " + fb);
+            System.out.println("Function has same signs at a and b.");
+            return;
+        }
+
+        error = b-a;
+
+        for(n = 0; n < nmax; n++)
+        {
+            error = error/2;
+            c = a + error;
+            fc = f(c);
+            System.out.println("n = " + n + " c: " + c + " f(c): " + fc + " error: " + error);
+            if(n == 99)
+            {
+                System.out.println("Slowly converges. Maximum iterations reached.");
+            }
+
+            if(Math.abs(error) < epsilon)
+            {
+                System.out.println("Convergence.");
+                return;
+            }
+
+            if(Math.signum(fa) != Math.signum(fc))
+            {
+                b = c;
+                fb = fc;
+            }
+            else
+            {
+                a = c;
+                fa = fc;
+            }
+        }  
+    }
  
  }
