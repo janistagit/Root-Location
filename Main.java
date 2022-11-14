@@ -168,5 +168,42 @@
             }
         }
     }
+
+    private void newton2(double x, double delta)
+    {
+        int n;
+        int nmax = 100;
+        double epsilon = 0.01;
+        double fx, fp, d;
+
+        fx = g(x);
+        System.out.println("n = 0" + " x: " + x + " f(x): " + fx);
+
+        for(n = 1; n < nmax; n++)
+        {
+            fp = gPrime(x);
+            if(Math.abs(fp) < delta)
+            {
+                System.out.println("Small derivative.");
+                return;
+            }
+
+            d = fx/fp;
+            x = x - d;
+            fx = g(x);
+            System.out.println("n = " + n + " x: " + x + " f(x): " + fx);
+
+            if(n == 99)
+            {
+                System.out.println("Slowly converges. Maximum iterations reached.");
+            }
+
+            if(Math.abs(d) < epsilon)
+            {
+                System.out.println("Convergence.");
+                return;
+            }
+        }
+    }
  
  }
