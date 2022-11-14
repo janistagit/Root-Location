@@ -321,5 +321,105 @@
             }
         }
     }
+
+    private void falsePosition(double a, double b)
+    {
+        int n;
+        int nmax = 100;
+        double epsilon = 0.01;
+        double c, fa, fb, fc, error;
+
+        fa = f(a);
+        fb = f(b);
+
+        if(Math.signum(fa) == Math.signum(fb))
+        {
+            System.out.println("a: " + a + " b: " + b + " f(a): " + fa + " f(b): " + fb);
+            System.out.println("Function has same signs at a and b.");
+            return;
+        }
+
+        error = b-a;
+
+        for(n = 0; n < nmax; n++)
+        {
+            error = error/2;
+            c = ((a * fb) - (b * fa)) / (fb - fa);
+            fc = f(c);
+            System.out.println("n = " + n + " c: " + c + " f(c): " + fc + " error: " + error);
+
+            if(n == 99)
+            {
+                System.out.println("Slowly converges. Maximum iterations reached.");
+            }
+
+            if(Math.abs(error) < epsilon)
+            {
+                System.out.println("Convergence.");
+                return;
+            }
+
+            if(Math.signum(fa) != Math.signum(fc))
+            {
+                b = c;
+                fb = fc;
+            }
+            else
+            {
+                a = c;
+                fa = fc;
+            }
+        }  
+    }
+
+    private void falsePosition2(double a, double b)
+    {
+        int n;
+        int nmax = 100;
+        double epsilon = 0.01;
+        double c, fa, fb, fc, error;
+
+        fa = g(a);
+        fb = g(b);
+
+        if(Math.signum(fa) == Math.signum(fb))
+        {
+            System.out.println("a: " + a + " b: " + b + " f(a): " + fa + " f(b): " + fb);
+            System.out.println("Function has same signs at a and b.");
+            return;
+        }
+
+        error = b-a;
+
+        for(n = 0; n < nmax; n++)
+        {
+            error = error/2;
+            c = ((a * fb) - (b * fa)) / (fb - fa);
+            fc = g(c);
+            System.out.println("n = " + n + " c: " + c + " f(c): " + fc + " error: " + error);
+
+            if(n == 99)
+            {
+                System.out.println("Slowly converges. Maximum iterations reached.");
+            }
+
+            if(Math.abs(error) < epsilon)
+            {
+                System.out.println("Convergence.");
+                return;
+            }
+
+            if(Math.signum(fa) != Math.signum(fc))
+            {
+                b = c;
+                fb = fc;
+            }
+            else
+            {
+                a = c;
+                fa = fc;
+            }
+        }  
+    }
  
  }
