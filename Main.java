@@ -205,5 +205,63 @@
             }
         }
     }
+
+    private void secant(double a, double b)
+    {
+        int n;
+        int nmax = 100;
+        double epsilon = 0.01;
+        double fa, fb, d;
+
+        fa = f(a);
+        fb = f(b);
+
+        if(Math.abs(fa) > Math.abs(fb))
+        {
+            double temp = a;
+            a = b;
+            b = temp;
+
+            temp = fa;
+            fa = fb;
+            fb = temp;
+        }
+        System.out.println("n = 0" + " a: " + a + " f(a): " + fa);
+        System.out.println("n = 1" + " b: " + b + " f(b): " + fb);
+
+        for(n = 2; n < nmax; n++)
+        {
+            if(Math.abs(fa) > Math.abs(fb))
+            {
+                double temp = a;
+                a = b;
+                b = temp;
+
+                temp = fa;
+                fa = fb;
+                fb = temp;
+            }
+
+            d = (b - a) / (fb - fa);
+            b = a;
+            fb = fa;
+            d = d * fa;
+
+            if(Math.abs(d) < epsilon)
+            {
+                System.out.println("Convergence.");
+                return;
+            }
+
+            a = a - d;
+            fa = f(a);
+            System.out.println("n = " + n + " a: " + a + " f(a): " + fa);
+
+            if(n == 99)
+            {
+                System.out.println("Slowly converges. Maximum iterations reached.");
+            }
+        }
+    }
  
  }
