@@ -9,35 +9,44 @@
  {
     public static void main(String[] args)
     {
+        //bisection(0, 1);
+        //bisection(1, 2);
+        //bisection(3, 4);
+        //bisection2(120, 130);
+
+
 
     }
 
-    private double f(double x)
+    private static double f(double x)
     {
         return (2 * Math.pow(x, 3)) - (11.7 * Math.pow(x, 2)) + (17.7 * x) -5;
     }
 
-    private double fPrime(double x)
+    private static double fPrime(double x)
     {
         return (6 * Math.pow(x, 2)) - (23.4 * x) + 17.7;
     }
 
-    private double g(double x)
+    private static double g(double x)
     {
         return x + 10 - (x * Math.cosh(50/x));
     }
 
-    private double gPrime(double x)
+    private static double gPrime(double x)
     {
         return 1 + (50 * Math.sinh(50/x) / x) - Math.cosh(50/x);
     }
 
-    private void bisection(double a, double b)
+    private static void bisection(double a, double b)
     {
         int n;
         int nmax = 100;
         double epsilon = 0.01;
         double c, fa, fb, fc, error;
+
+        System.out.println("\nBisection Method: Function 1");
+        System.out.println("--------------------------------------------------");
 
         fa = f(a);
         fb = f(b);
@@ -82,12 +91,15 @@
         }  
     }
 
-    private void bisection2(double a, double b)
+    private static void bisection2(double a, double b)
     {
         int n;
         int nmax = 100;
         double epsilon = 0.01;
         double c, fa, fb, fc, error;
+
+        System.out.println("\nBisection Method: Function 2");
+        System.out.println("--------------------------------------------------");
 
         fa = g(a);
         fb = g(b);
@@ -132,12 +144,15 @@
         }  
     }
 
-    private void newton(double x, double delta)
+    private static void newton(double x, double delta)
     {
         int n;
         int nmax = 100;
         double epsilon = 0.01;
         double fx, fp, d;
+
+        System.out.println("\nNewton-Raphson Method: Function 1");
+        System.out.println("--------------------------------------------------");
 
         fx = f(x);
         System.out.println("n = 0" + " x: " + x + " f(x): " + fx);
@@ -169,12 +184,15 @@
         }
     }
 
-    private void newton2(double x, double delta)
+    private static void newton2(double x, double delta)
     {
         int n;
         int nmax = 100;
         double epsilon = 0.01;
         double fx, fp, d;
+
+        System.out.println("\nNewton-Raphson Method: Function 2");
+        System.out.println("--------------------------------------------------");
 
         fx = g(x);
         System.out.println("n = 0" + " x: " + x + " f(x): " + fx);
@@ -206,12 +224,15 @@
         }
     }
 
-    private void secant(double a, double b)
+    private static void secant(double a, double b)
     {
         int n;
         int nmax = 100;
         double epsilon = 0.01;
         double fa, fb, d;
+
+        System.out.println("\nSecant Method: Function 1");
+        System.out.println("--------------------------------------------------");
 
         fa = f(a);
         fb = f(b);
@@ -264,12 +285,15 @@
         }
     }
 
-    private void secant2(double a, double b)
+    private static void secant2(double a, double b)
     {
         int n;
         int nmax = 100;
         double epsilon = 0.01;
         double fa, fb, d;
+
+        System.out.println("\nSecant Method: Function 2");
+        System.out.println("--------------------------------------------------");
 
         fa = g(a);
         fb = g(b);
@@ -322,12 +346,15 @@
         }
     }
 
-    private void falsePosition(double a, double b)
+    private static void falsePosition(double a, double b)
     {
         int n;
         int nmax = 100;
         double epsilon = 0.01;
         double c, fa, fb, fc, error;
+
+        System.out.println("\nFalse Position Method: Function 1");
+        System.out.println("--------------------------------------------------");
 
         fa = f(a);
         fb = f(b);
@@ -372,12 +399,15 @@
         }  
     }
 
-    private void falsePosition2(double a, double b)
+    private static void falsePosition2(double a, double b)
     {
         int n;
         int nmax = 100;
         double epsilon = 0.01;
         double c, fa, fb, fc, error;
+
+        System.out.println("\nFalse Position Method: Function 2");
+        System.out.println("--------------------------------------------------");
 
         fa = g(a);
         fb = g(b);
