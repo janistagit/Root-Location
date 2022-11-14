@@ -32,10 +32,11 @@
         return 1 + (50 * Math.sinh(50/x) / x) - Math.cosh(50/x);
     }
 
-    private void bisection(double a, double b, double epsilon)
+    private void bisection(double a, double b)
     {
         int n;
         int nmax = 100;
+        double epsilon = 0.01;
         double c, fa, fb, fc, error;
 
         fa = f(a);
@@ -56,7 +57,7 @@
             c = a + error;
             fc = f(c);
             System.out.println("n = " + n + " c: " + c + " f(c): " + fc + " error: " + error);
-            
+
             if(n == 99)
             {
                 System.out.println("Slowly converges. Maximum iterations reached.");
@@ -81,10 +82,11 @@
         }  
     }
 
-    private void bisection2(double a, double b, double epsilon)
+    private void bisection2(double a, double b)
     {
         int n;
         int nmax = 100;
+        double epsilon = 0.01;
         double c, fa, fb, fc, error;
 
         fa = g(a);
@@ -128,6 +130,43 @@
                 fa = fc;
             }
         }  
+    }
+
+    private void newton(double x, double delta)
+    {
+        int n;
+        int nmax = 100;
+        double epsilon = 0.01;
+        double fx, fp, d;
+
+        fx = f(x);
+        System.out.println("n = 0" + " x: " + x + " f(x): " + fx);
+
+        for(n = 1; n < nmax; n++)
+        {
+            fp = fPrime(x);
+            if(Math.abs(fp) < delta)
+            {
+                System.out.println("Small derivative.");
+                return;
+            }
+
+            d = fx/fp;
+            x = x - d;
+            fx = f(x);
+            System.out.println("n = " + n + " x: " + x + " f(x): " + fx);
+
+            if(n == 99)
+            {
+                System.out.println("Slowly converges. Maximum iterations reached.");
+            }
+
+            if(Math.abs(d) < epsilon)
+            {
+                System.out.println("Convergence.");
+                return;
+            }
+        }
     }
  
  }
