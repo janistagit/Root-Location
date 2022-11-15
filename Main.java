@@ -9,12 +9,25 @@
  {
     public static void main(String[] args)
     {
-        //bisection(0, 1);
-        //bisection(1, 2);
-        //bisection(3, 4);
-        //bisection2(120, 130);
+        bisection(0, 1);
+        bisection(1, 2);
+        bisection(3, 4);
+        bisection2(120, 130);
 
+        newton(1, 0.01);
+        newton(2, 0.01);
+        newton(4, 0.01);
+        newton2(130, 0.01);
 
+        secant(0, 1);
+        secant(1, 2);
+        secant(3, 4);
+        secant2(120, 130);
+
+        falsePosition(0, 1);
+        falsePosition(1, 2);
+        falsePosition(3, 4);
+        falsePosition2(120, 130);
 
     }
 
@@ -169,7 +182,7 @@
             d = fx/fp;
             x = x - d;
             fx = f(x);
-            System.out.println("n = " + n + " x: " + x + " f(x): " + fx);
+            System.out.println("n = " + n + " x: " + x + " f(x): " + fx + " error: " + d);
 
             if(n == 99)
             {
@@ -209,7 +222,7 @@
             d = fx/fp;
             x = x - d;
             fx = g(x);
-            System.out.println("n = " + n + " x: " + x + " f(x): " + fx);
+            System.out.println("n = " + n + " x: " + x + " f(x): " + fx + " error: " + d);
 
             if(n == 99)
             {
@@ -276,7 +289,7 @@
 
             a = a - d;
             fa = f(a);
-            System.out.println("n = " + n + " a: " + a + " f(a): " + fa);
+            System.out.println("n = " + n + " a: " + a + " f(a): " + fa + " error: " + d);
 
             if(n == 99)
             {
@@ -337,7 +350,7 @@
 
             a = a - d;
             fa = g(a);
-            System.out.println("n = " + n + " a: " + a + " f(a): " + fa);
+            System.out.println("n = " + n + " a: " + a + " f(a): " + fa + " error: " + d);
 
             if(n == 99)
             {
